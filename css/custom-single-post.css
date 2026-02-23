@@ -1,0 +1,143 @@
+/* 
+==========================
+=          GLOBAL        =
+==========================
+ */
+ .single-post {
+  container: content / inline-size;
+ }
+
+ .section__inner {
+  max-width: 1230px;
+  margin-inline: auto;
+ }
+
+ @container content (width < 850px) {
+  .section__inner, .header__inner {
+    padding-inline: .625em;
+  }
+ }
+
+ /* 
+==========================
+=         HEADER         =
+==========================
+ */
+ .single-post__header {
+  padding-block: 3em 1em;
+ }
+
+ .single-post__header > .header__inner {
+  max-width: 1230px;
+  margin-inline: auto;
+ }
+
+ .single-post__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: .3125em;
+  margin-bottom: .625em;
+ }
+
+ .breadcrumbs__item {
+  text-transform: uppercase;
+  color: var(--gray-dark);
+ }
+
+ .single-post__title {
+  font-size: clamp(2em, 2.5vw, 2.5em);
+  font-weight: 700;
+  color: #000;
+ }
+
+ .single-post__meta {
+  display: flex;
+  gap: .5em;
+ }
+
+  .single-post__meta > :is(.single-post__author, .single-post__date-time) {
+    font-size: .875em;
+  }
+
+ .single-post__author {
+  font-weight: 700;
+  color: #000;
+  text-transform: capitalize;
+ }
+
+/* 
+==========================
+=         CONTENT        =
+==========================
+*/
+.single-post__main {
+  padding-block: 0 3em;
+  border-bottom: 1px solid var(--gray-lightest);
+}
+
+.single-post__body {
+  color: #000;
+}
+
+.single-post__summary {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+/* 
+==========================
+=     RECOMMENDATION     =
+==========================
+*/
+.single-post__recommendation {
+  padding-block: 3em;
+}
+
+.recommendation__title {
+  justify-content: center;
+}
+
+.recommendation__post-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.recommendation__post-image {
+  display: block;
+  margin-bottom: .625em;
+
+  & > img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+}
+
+.recommendation__post-title {
+  font-weight: 600;
+  color: #000;
+}
+
+.recommendation__post-meta {
+  display: flex;
+  gap: .5em;
+  font-size: .875em;
+}
+
+.recommendation__post-categories {
+  color: #000;
+  text-transform: uppercase;
+}
+
+@container content (width < 850px) {
+  .recommendation__post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container content (width < 550px) {
+  .recommendation__post-list {
+    grid-template-columns: 1fr;
+  }
+}

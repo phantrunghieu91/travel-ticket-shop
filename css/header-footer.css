@@ -1,0 +1,42 @@
+/* 
+=========================
+=         HEADER        =
+=========================
+*/
+
+/* 
+=========================
+=         FOOTER        =
+=========================
+*/
+.absolute-footer {
+  display: none;
+}
+
+#footer {
+  background-color: var(--gray-lightest);
+}
+
+.footer__main {
+  padding-block: 2em 1em;
+}
+
+.footer__main-inner, .footer__bottom-inner {
+  max-width: 1230px;
+  margin-inline: auto;
+}
+
+.footer__main-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.footer__bottom {
+  padding-block: 1em;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  justify-content: space-between;
+}
