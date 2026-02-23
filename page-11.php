@@ -4,14 +4,7 @@
  * The template for displaying the home page. 
  */
 get_header();
-$feature_posts = get_posts(
-  array(
-    'post_type' => 'post',
-    'posts_per_page' => 8,
-    'meta_key' => 'featured_post',
-    'meta_value' => '1',
-  )
-);
+
 
 // get category for carousel
 $carousel_cat_id = get_field('carousel_category', get_the_ID());
@@ -84,21 +77,7 @@ if ($widget_category) {
     )
   );
 }
-
-// Get popular category 'diem-tham-quan'
-$popular_category = get_category_by_slug('diem-tham-quan');
-if ($popular_category) {
-  $popular_category_posts = get_posts(
-    array(
-      'numberposts' => 8,
-      'orderby' => 'post_date',
-      'order' => 'DESC',
-      'post_type' => 'post',
-      'post_status' => 'publish',
-      'category' => $popular_category->term_id
-    )
-  );
-}
+$popular_category_id = 4;
 // Get entertainment categories
 $entertainment_category_ids = get_field('entertainment_categories', get_the_ID());
 if (!empty($entertainment_category_ids)) {
@@ -129,11 +108,9 @@ $video_posts = get_posts(
 $video_archive_link = get_post_type_archive_link('video');
 ?>
 <div id="content" class="home-page">
-  <section class="feature-posts-section">
-    <div class="section__inner">
-      <?php get_template_part('custom-templates/homepage/featured-post', 'default', ['featured_posts' => $feature_posts]); ?>
-    </div>
-  </section>
+
+  <?php get_template_part('custom-templates/homepage/featured-post', 'default'); ?>
+
   <section class="category-carousel-section">
     <div class="section__inner">
       <div class="category-carousel">
@@ -238,11 +215,9 @@ $video_archive_link = get_post_type_archive_link('video');
       </div>
     </div>
   </section>
-  <section class="popular-category-section">
-    <div class="section__inner">
-      <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2', ['featured_posts' => $popular_category_posts, 'category' => $popular_category]); ?>
-    </div>
-  </section>
+  
+  <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2', [ 'category_id' => $popular_category_id ]); ?>
+  
   <section class="entertainment-section">
     <div class="section__inner">
       <div class="entertainment-categories">
