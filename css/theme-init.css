@@ -1,0 +1,25 @@
+:root {
+  --screen-lg: 1230px;
+  --screen-md: 850px;
+  --screen-sm: 550px;
+  --screen-xs: 390px;
+}
+
+#content {
+  container: content / inline-size;
+}
+
+.section__inner {
+  width: min(var(--screen-lg), 100%);
+  margin-inline: auto;
+}
+
+.section__inner--full {
+  width: 100%;
+}
+
+@container content (width < 1230px) {
+  .section__inner:not(.section__inner--full) {
+    padding-inline: .625em;
+  }
+}

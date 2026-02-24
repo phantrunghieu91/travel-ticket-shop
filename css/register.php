@@ -3,8 +3,9 @@ add_action('wp_enqueue_scripts', function () {
   // import google icons
   wp_enqueue_style('google-icons', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0', array(), null, 'all');
   wp_enqueue_style('header-footer', get_stylesheet_directory_uri() . '/css/header-footer.css', array(), '1.0.0', 'all');
+  wp_enqueue_style('theme-init', get_stylesheet_directory_uri() . '/css/theme-init.css', array(), time(), 'all'); // 1.0.0
   if (is_front_page()) {
-    wp_enqueue_style('homepage', get_stylesheet_directory_uri() . '/css/homepage.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('homepage', get_stylesheet_directory_uri() . '/css/homepage.css', array(), time(), 'all');
     wp_enqueue_style('swiper', get_stylesheet_directory_uri() . '/css/swiper.css', array(), null, 'all');
   }
   // import custom-archive.css for archive page and not for archive-video.php, taxonomy-video-type.php
