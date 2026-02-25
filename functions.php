@@ -23,17 +23,33 @@ include get_theme_file_path('shortcodes/register.php');
 include get_theme_file_path('js/register.php');
 include get_theme_file_path('css/register.php');
 
-function dumpDie($var)
-{
-  ini_set("highlight.keyword", "#a50000;  font-weight: bolder");
-  ini_set("highlight.string", "#5825b6; font-weight: lighter; ");
+function get_url_form_link_to( $link_to_data ) {
+  $type = $link_to_data['type'];
 
-  ob_start();
-  highlight_string("<?php\n" . var_export($var, true) . "?>");
-  $highlighted_output = ob_get_clean();
+    if($type === 'none') {
+      return false;
+    }
+    
+    $data = $link_to_data[$type];
+    $url = '';
 
-  $highlighted_output = str_replace(["&lt;?php", "?&gt;"], '', $highlighted_output);
-
-  echo $highlighted_output;
-  die();
+    switch ($type) {
+      case 'custom':
+        $url = $data;
+        break;
+      case 'post':
+      case 'page':
+      case 'product':
+        $url = get_permalink($data);
+        break;
+      case 'category':
+      case 'product_cat':
+        $url = get_term_link($data, 'product_cat');
+        break;
+    }
+    if( $url instanceof \WP_Error ) {
+      $url = '';
+    }
+    $return = !empty($url) && $url != '' ? esc_url($url) : false;
+    return $return;
 }
