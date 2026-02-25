@@ -109,7 +109,9 @@ $video_archive_link = get_post_type_archive_link('video');
 ?>
 <div id="content" class="home-page">
 
-  <?php get_template_part('custom-templates/homepage/featured-post', 'default'); ?>
+  <?php // get_template_part('custom-templates/homepage/featured-post', 'default'); ?>
+
+  <?php get_template_part( 'custom-templates/homepage/hero-section' ) ?>
 
   <section class="category-carousel-section">
     <div class="section__inner">
