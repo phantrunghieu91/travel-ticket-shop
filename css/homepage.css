@@ -231,7 +231,6 @@
     height: 100%;
   }
 }
-
 /* 
 ====================
 =  FEATURED POSTS  =
@@ -543,7 +542,8 @@
 }
 
 .category-carousel__prev, .category-carousel__next,
-.magazines__prev, .magazines__next {
+.magazines__prev, .magazines__next,
+.hotel-carousel__prev, .hotel-carousel__next {
   --btn-translate-x: 50%;
   width: 2.5em;
   aspect-ratio: 1/1;
@@ -564,89 +564,18 @@
   }
 }
 
-.category-carousel__prev, .magazines__prev {
+.category-carousel__prev, .magazines__prev, .hotel-carousel__prev {
   left: 0;
   --btn-translate-x: -50%;
 }
 
-.category-carousel__next, .magazines__next {
+.category-carousel__next, .magazines__next, .hotel-carousel__next {
   right: 0;
 }
+/* =================== */
+/* =  Hotel carousel = */
+/* =================== */
 
-/* 
-====================
-=    MULTIMEDIA    =
-====================
-*/
-.multimedia-section {
-  background-color: var(--secondary-medium);
-  padding-block: 3em;
-}
-
-.multimedia__header {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  margin-bottom: 2em;
-}
-
-.multimedia__title.section__title {
-  width: fit-content;
-  margin-bottom: 0;
-}
-
-.multimedia__children {
-  display: flex;
-  gap: 1em;
-}
-
-.multimedia__child {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.multimedia__posts {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1em;
-}
-
-.multimedia__post--big {
-  grid-column: span 2;
-  grid-row: span 2;
-
-  & .multimedia__post-title {
-    font-size: 1.2em;
-  }
-}
-
-.multimedia__post-image {
-  display: block;
-  margin-bottom: .625em;
-}
-
-.multimedia__post-image img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-
-.multimedia__post-title {
-  font-weight: 700;
-}
-
-@container content (width < 850px) {
-  .multimedia__posts {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-  }
-
-  .multimedia__post--big {
-    grid-row: 1 / span 1;
-  }
-}
 
 /* 
 ====================
