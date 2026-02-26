@@ -72,7 +72,44 @@ document.addEventListener('DOMContentLoaded', function () {
       resizeObserver.observe(this.heroSection);
     }
   }.init();
-
+  // hotel carousel
+  const hotelCarousel = {
+    init() {
+      try {
+        this.cacheElements();
+        this.initCarousel();
+      } catch( error ) {
+        console.warn('Hotel carousel error: ', error);
+      }
+    },
+    cacheElements() {
+      this.carousel = document.querySelector('.hotel-carousel .swiper');
+      if( !this.carousel ) {
+        throw new Error('Hotel carousel element not found');
+      }
+    },
+    initCarousel() {
+      if( typeof Swiper === 'undefined' ) {
+        throw new Error('Swiper library not loaded');
+      }
+      this.swiper = new Swiper(this.carousel, {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+        breakpoints: {
+          550: {
+            slidesPerView: 2,
+          },
+          850: {
+            slidesPerView: 4,
+          }
+        },
+        navigation: {
+          nextEl: '.hotel-carousel__next',
+          prevEl: '.hotel-carousel__prev',
+        }
+      });
+    }
+  }.init();
   // category carousel swiper
   const categoryCarousel = new Swiper('.category-carousel__posts', {
     slidesPerView: 2,

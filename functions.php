@@ -1,4 +1,6 @@
 <?php
+define('PLACEHOLDER_IMAGE_ID', 516);
+
 // add post view counter class
 require_once get_theme_file_path('inc/PostViewCounter.php');
 // add featured post class
