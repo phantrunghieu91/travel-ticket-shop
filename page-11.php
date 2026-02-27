@@ -21,28 +21,6 @@ $category_posts = get_posts(
     'category' => $carousel_cat_id
   )
 );
-// get multimedia post
-// get all categories that is children of category with slug multimedia
-$multimedia = get_category_by_slug('multimedia');
-if (!$multimedia)
-  return;
-$categories = get_categories(
-  array(
-    'child_of' => $multimedia->term_id,
-    'hide_empty' => false,
-  )
-);
-// Get all posts from multimedia category and its children
-$multimedia_posts = get_posts(
-  array(
-    'numberposts' => 5,
-    'orderby' => 'post_date',
-    'order' => 'DESC',
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'category' => $multimedia->term_id
-  )
-);
 // Latest news
 $latest_news = get_posts([
   'numberposts' => 10,
@@ -137,33 +115,9 @@ $video_archive_link = get_post_type_archive_link('video');
       </div>
     </div>
   </section>
-  <section class="multimedia-section">
-    <div class="section__inner">
-      <div class="multimedia">
-        <header class="multimedia__header">
-          <a class="multimedia__title section__title"
-            href="<?= esc_url(get_term_link($multimedia)) ?>"><?= esc_html($multimedia->name) ?></a>
-          <div class="multimedia__children">
-            <?php foreach ($categories as $category): ?>
-              <a href="<?= get_category_link($category->term_id) ?>" class="multimedia__child"><?= $category->name ?></a>
-            <?php endforeach; ?>
-          </div>
-        </header>
-        <div class="multimedia__posts">
-          <?php $multimedia_count = 0;
-          foreach ($multimedia_posts as $multimedia_post):
-            $params = ['class' => 'multimedia__post', 'post_obj' => $multimedia_post];
-            if ($multimedia_count === 0) {
-              $params['show_excerpt'] = true;
-              $params['addition_classes'] = 'multimedia__post--big';
-            }
-            get_template_part('custom-templates/post-in-loop/layout', 'default', $params);
-            $multimedia_count++;
-            ?>
-          <?php endforeach; ?>
-        </div>
-      </div>
-  </section>
+
+  <?php get_template_part( 'custom-templates/homepage/hotel-carousel-section' ) ?>
+  
   <section class="latest-news-section">
     <div class="section__inner">
       <div class="latest-news">

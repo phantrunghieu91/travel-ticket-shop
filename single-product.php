@@ -1,0 +1,15 @@
+<?php 
+/**
+ * @author Hieu "Jin" Phan Trung
+ * * Template: Single product template
+ */
+
+get_header();
+?>
+<div id="content">
+
+  <?php get_template_part( 'custom-templates/woocommerce/single-product/header' ) ?>
+
+</div>
+<?php
+get_footer();

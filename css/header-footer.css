@@ -3,7 +3,13 @@
 =         HEADER        =
 =========================
 */
+.header-top .nav > li > a, .header-top .nav-small.nav>li.html {
+  font-size: 1rem;
+}
 
+.header-main .header-nav.nav-left {
+  justify-content: flex-end;
+}
 /* 
 =========================
 =         FOOTER        =
