@@ -12,6 +12,10 @@ require_once get_theme_file_path('inc/RelativeCategory.php');
 require_once get_theme_file_path('inc/InfiniteScroll.php');
 InfiniteScroll::registerAction();
 
+// add Woocommerce override class
+require_once get_theme_file_path('inc/WoocommerceOverride.php');
+new WoocommerceOverride();
+
 // Turn off auto gen <p> of contact form 7
 add_filter('wpcf7_autop_or_not', false);
 
