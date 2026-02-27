@@ -39,10 +39,10 @@ for( $i = 0; $i < 9; $i++) {
           ?>
         </div>
       </div>
-      <a href="javascript:void(0);" class="hotel-carousel__prev">
+      <a href="javascript:void(0);" class="carousel-btn carousel-btn__prev" aria-label="Carousel previous slide" role="button">
         <span class="material-symbols-outlined">chevron_left</span>
       </a>
-      <a href="javascript:void(0);" class="hotel-carousel__next">
+      <a href="javascript:void(0);" class="carousel-btn carousel-btn__next" aria-label="Carousel next slide" role="button">
         <span class="material-symbols-outlined">chevron_right</span>
       </a>
     </div>

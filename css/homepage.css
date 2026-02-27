@@ -540,38 +540,6 @@
   border-radius: 0 0 .3125em .3125em;
   flex: 1;
 }
-
-.category-carousel__prev, .category-carousel__next,
-.magazines__prev, .magazines__next,
-.hotel-carousel__prev, .hotel-carousel__next {
-  --btn-translate-x: 50%;
-  width: 2.5em;
-  aspect-ratio: 1/1;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background-color: #fff;
-  border: 1px solid var(--gray-lightest);
-  position: absolute;
-  top: calc(50% + 40px);
-  transform: translate(var(--btn-translate-x), -50%);
-  z-index: 3;
-  cursor: pointer;
-  transition: background-color 300ms;
-
-  &:hover {
-    background-color: var(--gray-lightest);
-  }
-}
-
-.category-carousel__prev, .magazines__prev, .hotel-carousel__prev {
-  left: 0;
-  --btn-translate-x: -50%;
-}
-
-.category-carousel__next, .magazines__next, .hotel-carousel__next {
-  right: 0;
-}
 /* =================== */
 /* =  Hotel carousel = */
 /* =================== */
@@ -608,7 +576,7 @@
   margin-right: var(--_space-between);
 }
 
-.hotel-carousel__prev, .hotel-carousel__next {
+.hotel-carousel :where(.carousel-btn__prev, .carousel-btn__next) {
   top: 50%;
 }
 
