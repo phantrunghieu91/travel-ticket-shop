@@ -58,6 +58,10 @@ final class FeaturedPost
    */
   public function addFeaturedPostColumn($columns)
   {
+    // only for 'post' post type
+    if (get_post_type() !== 'post') {
+      return $columns;
+    }
     $columns = array_slice($columns, 0, 2, true) + ['featured_post' => 'Featured'] + array_slice($columns, 2, count($columns) - 2, true);
     $columns['featured_post'] = 'Featured';
     return $columns;
