@@ -31,7 +31,8 @@ for( $i = 0; $i < 9; $i++) {
           <?php foreach( $hotels as $post ) {
             setup_postdata( $post );
             echo '<div class="swiper-slide">';
-            get_template_part( 'custom-templates/woocommerce/product-in-loop' );
+            // get_template_part( 'custom-templates/woocommerce/product-in-loop' );
+            wc_get_template_part( 'content', 'product' );
             echo '</div>';
           }
           wp_reset_postdata();

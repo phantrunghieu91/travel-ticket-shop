@@ -38,3 +38,22 @@ html.no-scroll:before {
     padding-inline: .625em;
   }
 }
+
+/* Change woocommerce style */
+.product .category {
+  font-size: .75rem;
+  text-transform: capitalize;
+  color: var(--gray-darkest);
+}
+
+.product .product-title {
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  height: calc( 1rem * 1.5 * 2 );
+}
+
+.product .price {
+  font-size: 1rem;
+}
