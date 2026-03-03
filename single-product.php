@@ -10,6 +10,10 @@ get_header();
 
   <?php get_template_part( 'custom-templates/woocommerce/single-product/header' ) ?>
 
+  <?php get_template_part( 'custom-templates/woocommerce/single-product/gallery-section' ) ?>
+
+  <?php get_template_part( 'custom-templates/woocommerce/single-product/product-detail' ) ?>
+
 </div>
 <?php
 get_footer();
