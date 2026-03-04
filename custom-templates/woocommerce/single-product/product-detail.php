@@ -75,7 +75,10 @@ $surroundings = get_field('surroundings') ?? [];
       <?php if( !empty( $reviews['point'] ) && !empty( $reviews['title']) ): ?>
         <header class="product-detail__review-header">
         <?php if( !empty( $reviews['point'] ) ): ?>
-          <span class="product-detail__review-point"><?php echo esc_html( $reviews['point'] ) ?></span>  
+          <p class="product-detail__review-point">
+            <span><?php echo esc_html( $reviews['point'] ) ?>/</span>
+            <span>10</span>
+          </p>  
         <?php endif ?>
         <?php if( !empty( $reviews['title'] ) ): ?>
           <span class="product-detail__review-title"><?= esc_html( $reviews['title'] ) ?></span>
