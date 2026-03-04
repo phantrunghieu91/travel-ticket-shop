@@ -85,3 +85,6 @@ html.no-scroll:before {
 .carousel-btn:hover {
   background-color: var(--gray-lightest);
 }
+.carousel-btn.swiper-button-disabled {
+  display: none;
+}
