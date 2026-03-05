@@ -15,6 +15,8 @@ get_header();
   <?php get_template_part( 'custom-templates/woocommerce/single-product/product-detail' ) ?>
 
   <?php get_template_part( 'custom-templates/woocommerce/single-product/feedback-section' ) ?>
+  
+  <?php get_template_part( 'custom-templates/woocommerce/single-product/related-products-section' ) ?>
 
 </div>
 <?php

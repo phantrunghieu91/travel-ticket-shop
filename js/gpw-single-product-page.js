@@ -122,4 +122,42 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     },
   }.init();
+  // related products carousel
+  const relatedProductsCarousel = {
+    init() {
+      try {
+        this.cacheElements();
+        this.initSwiper();
+      } catch (error) {
+        console.warn('RELATED PRODUCTS CAROUSEL ERROR: ', error);
+      }
+    },
+    cacheElements() {
+      this.swiperEl = document.querySelector('.related-products .swiper');
+      if (!this.swiperEl) {
+        throw new Error('No swiper element found for related products carousel');
+      }
+    },
+    initSwiper() {
+      if(typeof Swiper === 'undefined') {
+        throw new Error('Swiper is not loaded');
+      }
+      this.swiper = new Swiper(this.swiperEl, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+          550: {
+            slidesPerView: 2,
+          },
+          850: {
+            slidesPerView: 4,
+          },
+        },
+        navigation: {
+          nextEl: '.related-products .carousel-btn__next',
+          prevEl: '.related-products .carousel-btn__prev',
+        },
+      });
+    },
+  }.init();
 });

@@ -9,10 +9,15 @@
   background-color: #EBEDF1;
 }
 
-:is(.product-header, .product-gallery, .product-detail, .feedback) .section__inner {
+:is(.product-header, .product-gallery, .product-detail, .feedback, .related-products) .section__inner {
   background-color: var(--_content-background-color);
   padding: var(--_content-padding);
 }
+
+:is(.product-header, .feedback, .related-products) .section__inner {
+  border-radius: var(--_content-border-radius);
+}
+
 .block__title {
   font-size: 1.125rem;
 }
@@ -21,10 +26,6 @@
 /* ==================== */
 .product-header {
   margin-top: 3rem;
-
-  .section__inner {
-    border-radius: var(--_content-border-radius);
-  }
 }
 /* ==================== */
 /* =      Gallery     = */
@@ -53,7 +54,6 @@
     }
     .carousel-btn {
       --btn-translate-x: 25%;
-      top: 50%;
     }
     .carousel-btn__next {
       --btn-translate-x: -25%;
@@ -198,7 +198,6 @@
     padding-inline: 1.25rem;
 
     .carousel-btn {
-      top: 50%;
       width: 1.5rem;
       height: 1.5rem;
       transform: translate(var(--btn-translate-x), -50%);
@@ -239,11 +238,7 @@
 /* =     Feedback     = */
 /* ==================== */
 .feedback {
-  margin-block: 1rem 3rem;
-
-  .section__inner {
-    border-radius: var(--_content-border-radius);
-  }
+  margin-block: 1rem 0;
 
   .comment-form, input[type=submit] {
     margin: 0;
@@ -259,5 +254,42 @@
 
   #review_form_wrapper {
     padding-bottom: 0;
+  }
+}
+/* ==================== */
+/* = Related Products = */
+/* ==================== */
+.related-products {
+  margin-block: 1rem 3rem;
+
+  .block__title {
+    margin-bottom: 1.875rem;
+  }
+
+  .related-products__carousel {
+    --_slides-per-view: 1;
+    --_space-between: 1.25rem;
+    position: relative;
+
+    .swiper-slide {
+      width: calc( (100% - var(--_space-between) * (var(--_slides-per-view) - 1)) / var(--_slides-per-view) );
+      margin-right: var(--_space-between);
+    }
+  }
+
+  .product {
+    padding: 0;
+  }
+
+  @container content ( width >= 550px ) {
+    .related-products__carousel {
+      --_slides-per-view: 2;
+    }
+  }
+
+  @container content ( width >= 850px ) {
+    .related-products__carousel {
+      --_slides-per-view: 4;
+    }
   }
 }
