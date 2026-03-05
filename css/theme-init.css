@@ -69,7 +69,7 @@ html.no-scroll:before {
   background-color: #fff;
   border: 1px solid var(--gray-lightest);
   position: absolute;
-  top: calc(50% + 40px);
+  top: 50%;
   transform: translate(var(--btn-translate-x), -50%);
   z-index: 3;
   cursor: pointer;

@@ -1,3 +1,7 @@
+:is(.category-carousel, .magazine-section) .carousel-btn {
+  top: calc(50% + 40px);
+}
+
 /* ==================== */
 /* =   Hero section   = */
 /* ==================== */
@@ -231,6 +235,7 @@
     height: 100%;
   }
 }
+
 /* 
 ====================
 =  FEATURED POSTS  =
@@ -540,6 +545,7 @@
   border-radius: 0 0 .3125em .3125em;
   flex: 1;
 }
+
 /* =================== */
 /* =  Hotel carousel = */
 /* =================== */
@@ -576,25 +582,22 @@
   margin-right: var(--_space-between);
 }
 
-.hotel-carousel :where(.carousel-btn__prev, .carousel-btn__next) {
-  top: 50%;
-}
-
 .hotel-carousel .product {
   padding: 0;
 }
 
-@container content ( width > 550px ) {
+@container content (width > 550px) {
   .hotel-carousel__swiper-wrapper {
     --_slides-per-view: 2;
   }
 }
 
-@container content ( width > 850px ) {
+@container content (width > 850px) {
   .hotel-carousel__swiper-wrapper {
     --_slides-per-view: 4;
   }
 }
+
 /* 
 ====================
 =   LATEST NEWS    =
