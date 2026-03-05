@@ -89,7 +89,7 @@ $video_archive_link = get_post_type_archive_link('video');
 
   <?php // get_template_part('custom-templates/homepage/featured-post', 'default'); ?>
 
-  <?php get_template_part( 'custom-templates/homepage/hero-section' ) ?>
+  <?php get_template_part('custom-templates/homepage/hero-section') ?>
 
   <section class="category-carousel-section">
     <div class="section__inner">
@@ -106,18 +106,20 @@ $video_archive_link = get_post_type_archive_link('video');
             <?php endforeach; ?>
           </div>
         </div>
-        <div class="category-carousel__prev">
+        <a href="javascript:void(0);" class="carousel-btn carousel-btn__prev" aria-label="Carousel previous slide"
+          role="button">
           <span class="material-symbols-outlined">chevron_left</span>
-        </div>
-        <div class="category-carousel__next">
+        </a>
+        <a href="javascript:void(0);" class="carousel-btn carousel-btn__next" aria-label="Carousel next slide"
+          role="button">
           <span class="material-symbols-outlined">chevron_right</span>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <?php get_template_part( 'custom-templates/homepage/hotel-carousel-section' ) ?>
-  
+  <?php get_template_part('custom-templates/homepage/hotel-carousel-section') ?>
+
   <section class="latest-news-section">
     <div class="section__inner">
       <div class="latest-news">
@@ -136,7 +138,8 @@ $video_archive_link = get_post_type_archive_link('video');
                   foreach ($most_views_query->posts as $most_view):
                     $category = get_the_category($most_view->ID)[0];
                     ?>
-                    <div class="most-read__item" data-view-count="<?= class_exists('PostViewCounter') ? PostViewCounter::getPostViewCount($most_view->ID) : 0 ?>">
+                    <div class="most-read__item"
+                      data-view-count="<?= class_exists('PostViewCounter') ? PostViewCounter::getPostViewCount($most_view->ID) : 0 ?>">
                       <a href="<?= esc_url(get_permalink($most_view->ID)) ?>" class="most-read__image">
                         <?= get_the_post_thumbnail($most_view->ID, 'thumbnail', ['alt' => $most_view->post_name]) ?>
                       </a>
@@ -171,9 +174,9 @@ $video_archive_link = get_post_type_archive_link('video');
       </div>
     </div>
   </section>
-  
-  <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2', [ 'category_id' => $popular_category_id ]); ?>
-  
+
+  <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2', ['category_id' => $popular_category_id]); ?>
+
   <section class="entertainment-section">
     <div class="section__inner">
       <div class="entertainment-categories">
@@ -195,7 +198,7 @@ $video_archive_link = get_post_type_archive_link('video');
             <a class="entertainment-cat__title section__title"
               href="<?= esc_url(get_term_link($entertainment_category)) ?>"><?= esc_html($entertainment_category->name) ?></a>
             <div class="entertainment__cat-posts">
-              <?php foreach ($cate_posts as $cat_post): 
+              <?php foreach ($cate_posts as $cat_post):
                 get_template_part('custom-templates/post-in-loop/layout', 'default', ['post_obj' => $cat_post, 'class' => 'entertainment__post']);
               endforeach; ?>
             </div>
@@ -231,12 +234,12 @@ $video_archive_link = get_post_type_archive_link('video');
             <?php endforeach; ?>
           </div>
         </div>
-        <div class="magazines__prev">
+        <a href="javascript:void(0);" class="carousel-btn carousel-btn__prev" aria-label="Carousel previous slide" role="button">
           <span class="material-symbols-outlined">chevron_left</span>
-        </div>
-        <div class="magazines__next">
+        </a>
+        <a href="javascript:void(0);" class="carousel-btn carousel-btn__next" aria-label="Carousel next slide" role="button">
           <span class="material-symbols-outlined">chevron_right</span>
-        </div>
+        </a>
       </div>
     </div>
   </section>

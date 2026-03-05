@@ -57,3 +57,34 @@ html.no-scroll:before {
 .product .price {
   font-size: 1rem;
 }
+
+/* Carousel default */
+.carousel-btn {
+  --btn-translate-x: 50%;
+  width: 2.5em;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid var(--gray-lightest);
+  position: absolute;
+  top: 50%;
+  transform: translate(var(--btn-translate-x), -50%);
+  z-index: 3;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.carousel-btn__prev {
+  --btn-translate-x: -50%;
+  left: 0;
+}
+.carousel-btn__next {
+  right: 0;
+}
+.carousel-btn:hover {
+  background-color: var(--gray-lightest);
+}
+.carousel-btn.swiper-button-disabled {
+  display: none;
+}

@@ -24,4 +24,9 @@ add_action('wp_enqueue_scripts', function () {
   if (is_post_type_archive('video') || is_tax('video-type') || is_singular('video')) {
     wp_enqueue_style('video-post-type', get_stylesheet_directory_uri() . '/css/video-post-type.css', array(), '1.0.0', 'all');
   }
+  if( is_product() ) {
+    wp_enqueue_style('swiper', get_stylesheet_directory_uri() . '/css/swiper.css', array(), null, 'all');
+    wp_enqueue_style('fancybox', get_stylesheet_directory_uri() . '/css/fancybox.min.css', [], null, 'all');
+    wp_enqueue_style('gpw-single-product-page', get_stylesheet_directory_uri() . '/css/gpw-single-product-page.css', array(), time(), 'all');
+  }
 });

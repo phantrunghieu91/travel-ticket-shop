@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         },
         navigation: {
-          nextEl: '.hotel-carousel__next',
-          prevEl: '.hotel-carousel__prev',
+          nextEl: '.hotel-carousel .carousel-btn__next',
+          prevEl: '.hotel-carousel .carousel-btn__prev',
         }
       });
     }
@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
     navigation: {
-      nextEl: '.category-carousel__next',
-      prevEl: '.category-carousel__prev',
+      nextEl: '.category-carousel .carousel-btn__next',
+      prevEl: '.category-carousel .carousel-btn__prev',
     },
   });
 
@@ -143,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
     navigation: {
-      nextEl: '.magazines__next',
-      prevEl: '.magazines__prev',
+      nextEl: '.magazine-section .carousel-btn__next',
+      prevEl: '.magazine-section .carousel-btn__prev',
     },
   });
 
