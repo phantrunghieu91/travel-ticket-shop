@@ -1,0 +1,47 @@
+/* ==================== */
+/* =     Products     = */
+/* ==================== */
+.gpw-products {
+  margin-block: 3rem;
+
+  .gpw-products__header {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 1.875rem;
+  }
+
+  .section__title {
+    margin-bottom: 0;
+  }
+
+  .gpw-products__view-all-btn {
+    white-space: nowrap;
+  }
+
+  .product {
+    padding: 0;
+  }
+
+  .gpw-products__carousel {
+    position: relative;
+  }
+  
+  .swiper-slide {
+    --_slides-per-view: 1;
+    --_space-between: 1.25rem;
+    width: calc( (100% - var(--_space-between) * (var(--_slides-per-view) - 1)) / var(--_slides-per-view) );
+    margin-right: var(--_space-between);    
+  }
+
+  @container content ( width > 550px ) {
+    .swiper-slide {
+      --_slides-per-view: 2;
+    }
+  }
+
+  @container content ( width > 850px ) {
+     .swiper-slide {
+      --_slides-per-view: 4;
+    }
+  }
+}
