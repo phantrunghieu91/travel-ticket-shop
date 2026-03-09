@@ -134,3 +134,42 @@
     }
   }
 }
+/* ==================== */
+/* =   Why choose us  = */
+/* ==================== */
+.why-choose-us {
+  padding-block: 3rem;
+
+  .why-choose-us__title {
+    text-align: center;
+    margin-bottom: 1.875rem;
+  }
+
+  .why-choose-us__reasons {
+    margin: 0;
+    list-style: none;
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .why-choose-us__reason {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .why-choose-us__reason-icon {
+    display: block;
+    width: 5rem;
+    aspect-ratio: 1/1;
+    margin-bottom: 1rem;
+  }
+
+  @container content ( width > 850px ) {
+    .why-choose-us__reasons {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

@@ -8,6 +8,8 @@ get_header(); ?>
 
   <?php 
   get_template_part( 'custom-templates/airport-transport/hero-section' );
+
+  get_template_part( 'custom-templates/airport-transport/why-choose-us-section' );
   ?>
 </div>
 <?php get_footer();
