@@ -19,7 +19,7 @@ require_once get_theme_file_path('inc/AdminProductPageController.php');
 new AdminProductPageController();
 
 // Turn off auto gen <p> of contact form 7
-add_filter('wpcf7_autop_or_not', false);
+add_filter('wpcf7_autop_or_not', '__return_false');
 
 // add dashicons to normal page too
 add_action('wp_enqueue_scripts', function () {
