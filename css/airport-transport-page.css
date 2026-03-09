@@ -1,0 +1,136 @@
+/* ==================== */
+/* =   Hero section   = */
+/* ==================== */
+.hero {
+  --_form-margin-top: -3.125rem;
+
+  .hero__content {
+    background: linear-gradient(to bottom, var(--primary-lighter), var(--primary-medium));
+    padding-block: 1.875rem calc(1.875rem - var(--_form-margin-top));
+    color: #fff;
+    display: grid;
+    gap: 1.875rem 2.5rem;
+  }
+
+  .hero__title {
+    color: inherit;
+    font-size: clamp(1.25rem, 2cqi, 1.5rem);
+  }
+
+  .hero__form-wrapper {
+    width: min(var(--screen-lg), calc(100% - 2 * .625rem));
+    margin-inline: auto;
+    margin-top: var(--_form-margin-top);
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: .635rem;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, .1), 0 0 1rem rgba(0, 0, 0, .1);
+  }
+
+  .wpcf7-form {
+    margin-bottom: 0;
+    display: grid;
+    gap: .625rem;
+  }
+
+  .wpcf7 .wpcf7-not-valid-tip {
+    position: absolute;
+    margin: 0;
+  }
+
+  .wpcf7__form-group {
+    --_form-group-border-color: var(--gray-light);
+    --_form-group-border-radius: .25rem;
+    display: grid;
+
+    &:has(.wpcf7-form-control:hover, .wpcf7-form-control:focus-visible) {
+      --_form-group-border-color: var(--secondary-dark);
+    }
+
+    &:not(:has(.wpcf7-submit)) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: repeat(2, auto);
+    }
+
+    label {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+
+    .material-symbols-outlined, .wpcf7-form-control-wrap {
+      grid-row: 2;
+      align-self: center;
+    }
+
+    .material-symbols-outlined {
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1;
+      border: 0.0625rem solid var(--_form-group-border-color);
+      border-radius: var(--_form-group-border-radius) 0 0 var(--_form-group-border-radius);
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .wpcf7-form-control {
+    margin-bottom: 0;
+
+    &:not([type=submit]) {
+      border-color: var(--_form-group-border-color);
+      border-width: .0625rem 0.0625rem .0625rem 0;
+      border-radius: 0 var(--_form-group-border-radius) var(--_form-group-border-radius) 0;
+      box-shadow: none;
+    }
+
+    &:hover, &:focus-visible {
+      box-shadow: none;
+    }
+  }
+
+  .wpcf7-submit {
+    margin: 0;
+    width: 100%;
+  }
+
+  .wpcf7-spinner {
+    display: none;
+  }
+
+  @container content (width > 850px) {
+    .hero__content {
+      grid-template-columns: 1fr repeat(2, minmax(0, var(--screen-lg))) 1fr;
+      align-items: center;
+    }
+
+    .hero__content-left {
+      grid-column: 2;
+    }
+
+    .wpcf7-form {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .625rem;
+    }
+
+    .wpcf7-submit {
+      align-self: end;
+    }
+
+    .wpcf7-response-output {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      margin: .625rem 0 0;
+    }
+  }
+
+  @container content (width < 1200px) {
+    .hero__content {
+      padding-inline: .625rem;
+    }
+
+    .hero__form-wrapper {
+      margin-inline: .625rem;
+    }
+  }
+}
