@@ -1,5 +1,6 @@
 <?php
 add_action('wp_enqueue_scripts', function () {
+  wp_enqueue_script('theme-init', get_stylesheet_directory_uri() . '/js/theme-init.js', [], time(), true);
   if( is_front_page() || is_singular('product') || is_tax('product_cat') ) {
     wp_enqueue_script('swiper', get_stylesheet_directory_uri() . '/js/swiper.js', array(), null, true);
   }

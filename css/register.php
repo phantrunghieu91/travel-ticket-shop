@@ -34,4 +34,7 @@ add_action('wp_enqueue_scripts', function () {
   if( is_tax('product_cat') ) {
     wp_enqueue_style('gpw-category-product-page', get_stylesheet_directory_uri() . '/css/gpw-category-product-page.css', array(), time(), 'all');
   }
+  if( is_page([657]) ) { // airport transport page
+    wp_enqueue_style('airport-transport-page', get_stylesheet_directory_uri() . '/css/airport-transport-page.css', array(), time(), 'all');
+  }
 });
