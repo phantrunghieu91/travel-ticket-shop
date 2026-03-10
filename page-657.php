@@ -10,6 +10,8 @@ get_header(); ?>
   get_template_part( 'custom-templates/airport-transport/hero-section' );
 
   get_template_part( 'custom-templates/airport-transport/why-choose-us-section' );
+
+  get_template_part( 'custom-templates/airport-transport/partners-section' );
   ?>
 </div>
 <?php get_footer();
