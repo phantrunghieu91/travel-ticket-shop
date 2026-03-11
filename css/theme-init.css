@@ -40,22 +40,73 @@ html.no-scroll:before {
 }
 
 /* Change woocommerce style */
-.product .category {
-  font-size: .75rem;
-  text-transform: capitalize;
-  color: var(--gray-darkest);
-}
+.product {
+  --_space-between-els: .5rem;
+  .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
 
-.product .product-title {
-  font-size: 1rem;
-  line-height: 1.5;
-  -webkit-line-clamp: 2;
-  text-overflow: ellipsis;
-  height: calc( 1rem * 1.5 * 2 );
-}
+  .product-title {
+    font-size: 1rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    height: calc(1rem * 1.5 * 2);
+  }
 
-.product .price {
-  font-size: 1rem;
+  .hotel-info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: var(--_space-between-els);
+  }
+
+  .hotel-info__accommodation-type, .hotel-info__star-rating {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .hotel-info__accommodation-type {
+    gap: .25rem;
+    padding: .25rem;
+    background-color: var(--primary-lighter);
+    color: var(--primary-darker);
+    border-radius: .25rem;
+  }
+
+  .hotel-info__star-rating .material-symbols-outlined {
+    color: goldenrod;
+  }
+
+  .product-category {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-darkest);
+    margin-bottom: var(--_space-between-els);
+  }
+
+  .product-tags {
+    margin: 0 0 var(--_space-between-els);
+    list-style: none;
+    display: flex;
+    gap: .3125rem;
+    font-size: .875rem;
+
+    li {
+      line-height: 1;
+      padding: .25rem;
+      margin: 0;
+      background-color: var(--gray-lightest);
+    }
+  }
+
+  .price {
+    font-size: 1rem;
+  }
 }
 
 /* Carousel default */
@@ -75,19 +126,24 @@ html.no-scroll:before {
   cursor: pointer;
   transition: background-color 300ms;
 }
+
 .carousel-btn__prev {
   --btn-translate-x: -50%;
   left: 0;
 }
+
 .carousel-btn__next {
   right: 0;
 }
+
 .carousel-btn:hover {
   background-color: var(--gray-lightest);
 }
+
 .carousel-btn.swiper-button-disabled {
   display: none;
 }
+
 /* Tabs */
 .tabs__nav-list {
   list-style: none;
@@ -96,6 +152,7 @@ html.no-scroll:before {
   gap: 1.875rem;
   border-bottom: .0625rem solid var(--secondary-dark);
 }
+
 .tabs__nav-item {
   cursor: pointer;
   font-weight: 700;
@@ -109,10 +166,12 @@ html.no-scroll:before {
     border-bottom: .1875rem solid var(--secondary-dark);
   }
 }
+
 .tabs__content {
   display: grid;
   grid-template-columns: 'tabs-content-stack';
 }
+
 .tabs__panel {
   background-color: #fff;
   grid-area: tabs-content-stack;
