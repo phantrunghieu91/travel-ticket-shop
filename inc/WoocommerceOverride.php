@@ -29,19 +29,21 @@ class WoocommerceOverride {
     if( empty($accommodation_type) && empty($star_rating) ) {
       return;
     }
-    echo '<div class="hotel-info"><span class="material-symbols-outlined">apartment</span>';
+    echo '<div class="hotel-info">';
     if( $accommodation_type && ! is_wp_error($accommodation_type) ) {
+      echo '<div class="hotel-info__accommodation-type"><span class="material-symbols-outlined">apartment</span>';
       $accommodation_type_name = reset( $accommodation_type )->name;
-      echo sprintf( '<span class="hotel-info__accommodation-type">%s</span>', $accommodation_type_name );
+      echo sprintf( '<span>%s</span>', $accommodation_type_name );
+      echo '</div>';
     }
     if( $star_rating && ! is_wp_error($star_rating) ) {
       $slug = reset( $star_rating )->slug;
       $stars = self::STAR_RATINGS[$slug] ?? 0;
-      echo '<span class="hotel-info__star-rating">';
+      echo '<div class="hotel-info__star-rating">';
       for ( $i = 0; $i < $stars; $i++ ) {
         echo '<span class="material-symbols-outlined">star</span>';
       }
-      echo '</span>';
+      echo '</div>';
     }
     echo '</div>';
   }
