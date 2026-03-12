@@ -40,10 +40,32 @@ html.no-scroll:before {
 }
 
 /* Change woocommerce style */
+.swiper-slide:has(.product) {
+  height: auto;
+  padding-block: 0 .625rem;
+}
 .product {
   --_space-between-els: .5rem;
+  height: 100%;
+  box-shadow: 0 .25rem .625rem rgb(0 0 0 / 0.15);
+  border-radius: .625rem;
+  overflow: hidden;
   .material-symbols-outlined {
     font-size: 1.25rem;
+  }
+
+  .box-image {
+    aspect-ratio: 28/20;
+
+    & .image-fade_in_back, & > div > a, & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .box-text {
+    padding-inline: .625rem;
+    font-size: 1rem;
   }
 
   .product-title {
@@ -70,8 +92,8 @@ html.no-scroll:before {
   .hotel-info__accommodation-type {
     gap: .25rem;
     padding: .25rem;
-    background-color: var(--primary-lighter);
-    color: var(--primary-darker);
+    background-color: var(--secondary-light);
+    color: var(--secondary-darker);
     border-radius: .25rem;
   }
 
@@ -106,6 +128,98 @@ html.no-scroll:before {
 
   .price {
     font-size: 1rem;
+  }
+}
+
+.hotel {
+  --_border-radius: .625rem;
+  --_content-padding: .625rem;
+
+  background-color: #fff;
+  border-radius: var(--_border-radius);
+  overflow: hidden;
+  box-shadow: 0 .25rem .625rem rgb(0 0 0 / 0.15);
+
+  &.hotel--horizontal {
+    display: grid;
+    grid-template-columns: 15rem 1fr 11.25rem;
+    gap: 1rem;
+    
+    &:not(:last-child) {
+      margin-bottom: clamp(.9375rem, 2cqi, 1.25rem);
+    }
+  }
+
+  .hotel__thumbnail {
+    display: block;
+    width: 100%;
+    aspect-ratio: 300/226;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .hotel__title {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .hotel__category {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-darkest);
+  }
+  .hotel__info {
+    display: flex;
+    gap: .5rem;
+  }
+  .hotel__accommodation-type, .hotel__star-rating {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+  .hotel__accommodation-type {
+    gap: .25rem;
+    padding: .25rem;
+    background-color: var(--secondary-light);
+    color: var(--secondary-darker);
+    border-radius: .25rem;
+  }
+  .hotel__star-rating .material-symbols-outlined {
+    color: goldenrod;
+  }
+  .hotel__content {
+    padding-block: var(--_content-padding);
+    display: grid;
+    align-content: start;
+    gap: .5rem;
+  }
+  .hotel__tags {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: .3125rem;
+  }
+  .hotel__tag {
+    margin: 0;
+    font-size: .875rem;
+    line-height: 1;
+    padding: .25rem .3125rem;
+    background-color: var(--gray-lightest);
+    color: var(--gray-dark);
+  }
+  .hotel__price {
+    padding: var(--_content-padding);
+    border-left: .0625rem solid var(--gray-lightest);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
