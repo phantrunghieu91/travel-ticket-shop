@@ -44,12 +44,15 @@ html.no-scroll:before {
   height: auto;
   padding-block: 0 .625rem;
 }
-.product {
-  --_space-between-els: .5rem;
-  height: 100%;
+.swiper-slide .product {
   box-shadow: 0 .25rem .625rem rgb(0 0 0 / 0.15);
   border-radius: .625rem;
   overflow: hidden;
+}
+.product {
+  --_space-between-els: .5rem;
+  height: 100%;
+  
   .material-symbols-outlined {
     font-size: 1.25rem;
   }
