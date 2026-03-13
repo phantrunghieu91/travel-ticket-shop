@@ -223,6 +223,21 @@ html.no-scroll:before {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 850px) {
+    &.hotel--horizontal {
+      grid-template-columns: 1fr;
+    }
+    .hotel__content {
+      padding-inline: var(--_content-padding);
+    }
+    .hotel__price {
+      align-items: flex-end;
+      border-top: .0625rem dashed var(--gray-lightest);
+      border-left: none;
+    }
   }
 }
 
