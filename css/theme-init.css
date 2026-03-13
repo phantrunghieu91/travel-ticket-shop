@@ -48,6 +48,13 @@ html.no-scroll:before {
   box-shadow: 0 .25rem .625rem rgb(0 0 0 / 0.15);
   border-radius: .625rem;
   overflow: hidden;
+
+  .box-text {
+    padding-inline: .625rem;
+  }
+}
+.has-equal-box-heights .product .box-image {
+  padding: 0;
 }
 .product {
   --_space-between-els: .5rem;
@@ -67,8 +74,7 @@ html.no-scroll:before {
   }
 
   .box-text {
-    padding-inline: .625rem;
-    font-size: 1rem;
+    font-size: .75rem;
   }
 
   .product-title {
@@ -181,6 +187,11 @@ html.no-scroll:before {
   .hotel__info {
     display: flex;
     gap: .5rem;
+    font-size: .75rem;
+
+    .material-symbols-outlined {
+      font-size: 1.25rem;
+    }
   }
   .hotel__accommodation-type, .hotel__star-rating {
     display: inline-flex;
