@@ -485,7 +485,13 @@
     grid-row: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: .625em;
+  }
+
+  .feature-posts.layout-2 > .feature-posts__center > .feature-post {
+    grid-template-rows: subgrid;
+    grid-row: 1 / 3;
   }
 
   .feature-posts.layout-2 > .feature-posts__right {
