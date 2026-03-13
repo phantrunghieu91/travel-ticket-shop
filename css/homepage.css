@@ -832,7 +832,7 @@
 */
 .magazine-section {
   padding-block: 3em;
-  background-color: var(--gray-lightest);
+  /* background-color: var(--gray-lightest); */
 }
 
 .magazines {
