@@ -24,6 +24,12 @@ $image_ids = $thumbnail_id ? array_merge( [ intval($thumbnail_id) ], $product->g
           </a>
 
         <?php endforeach ?>
+        <?php if( count( $image_ids ) > 7 ) : ?>
+          <div class="product-gallery__total-display">
+            <span>+<?= esc_html( count( $image_ids )) ?></span>
+            <span class="material-symbols-outlined">image</span>
+          </div>
+        <?php endif; ?>
       </div>
       <a href="javascript:void(0);" class="carousel-btn carousel-btn__prev" aria-label="Carousel previous slide" role="button">
         <span class="material-symbols-outlined">chevron_left</span>
