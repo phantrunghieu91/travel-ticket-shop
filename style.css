@@ -3,7 +3,7 @@ Theme Name: Flatsome Child
 Description: This is a child theme for Flatsome Theme
 Author: Hieu "Jin" Phan Trung
 Template: flatsome
-Version: 1.0.7
+Version: 1.0.8
 */
 
 /*************** ADD CUSTOM CSS HERE.   ***************/
@@ -23,7 +23,7 @@ Version: 1.0.7
   --secondary-lightest: color-mix(in srgb, var(--secondary-medium), #fff 70%);
   --secondary-lighter: color-mix(in srgb, var(--secondary-medium), #fff 50%);
   --secondary-light: color-mix(in srgb, var(--secondary-medium), #fff 30%);
-  --secondary-medium: #ffde76;
+  --secondary-medium: #d3a223;
   --secondary-dark: color-mix(in srgb, var(--secondary-medium), #000 30%);
   --secondary-darker: color-mix(in srgb, var(--secondary-medium), #000 50%);
   --secondary-darkest: color-mix(in srgb, var(--secondary-medium), #000 70%);
@@ -75,35 +75,6 @@ div.row.row.row-collapse {
 .row .section {
   padding-left: 0;
   padding-right: 0;
-}
-
-.section__title {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: .625em;
-  text-transform: uppercase;
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 1em;
-
-  &::before {
-    content: '';
-    display: block;
-    height: .8em;
-    width: .3125em;
-    background-color: var(--primary-medium);
-    transform: skew(-10deg);
-  }
-
-  &.has-underline::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 -.625em 0;
-    height: 1px;
-    background-color: var(--gray-lightest);
-  }
 }
 
 /*************** ALL SCREEN CSS HERE  ***************/
