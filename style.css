@@ -3,7 +3,7 @@ Theme Name: Flatsome Child
 Description: This is a child theme for Flatsome Theme
 Author: Hieu "Jin" Phan Trung
 Template: flatsome
-Version: 1.0.4
+Version: 1.0.7
 */
 
 /*************** ADD CUSTOM CSS HERE.   ***************/
@@ -15,7 +15,7 @@ Version: 1.0.4
   --primary-lightest: color-mix(in srgb, var(--primary-medium), #fff 70%);
   --primary-lighter: color-mix(in srgb, var(--primary-medium), #fff 50%);
   --primary-light: color-mix(in srgb, var(--primary-medium), #fff 30%);
-  --primary-medium: #dd3333;
+  --primary-medium: #472719;
   --primary-dark: color-mix(in srgb, var(--primary-medium), #07253c 30%);
   --primary-darker: color-mix(in srgb, var(--primary-medium), #07253c 50%);
   --primary-darkest: color-mix(in srgb, var(--primary-medium), #07253c 70%);
@@ -36,6 +36,8 @@ Version: 1.0.4
   --tertiary-darker: color-mix(in srgb, var(--tertiary-medium), #909d85 50%);
   --tertiary-darkest: color-mix(in srgb, var(--tertiary-medium), #909d85 70%);
 
+  --red-medium: #dd3333;
+  
   --gray-lightest: color-mix(in srgb, var(--gray-medium), #fff 70%);
   --gray-lighter: color-mix(in srgb, var(--gray-medium), #fff 50%);
   --gray-light: color-mix(in srgb, var(--gray-medium), #fff 30%);
