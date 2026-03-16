@@ -22,7 +22,7 @@
     padding-top: 8rem;
     position: relative;
     container: footer / inline-size;
-    background-color: var(--gray-lightest);
+    background-color: #F7FAFC;
   }
 
   .subscribe-form {
@@ -104,13 +104,21 @@
     margin-top: .25rem;
   }
 
+  .footer__main {
+    padding-block: 0 1.5rem;
+  }
+
   .footer__main .section__inner {
     display: grid;
-    gap: 2.5rem 0;
   }
 
   .footer__logo {
     grid-column: 1 / -1;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer__about {
+    margin-bottom: 1.25rem;
   }
 
   .footer__menu-list {
@@ -129,13 +137,70 @@
   }
 
   .footer__bottom {
+    padding-block: 1rem;
+    border-top: .0625rem solid var(--gray-light);
     font-size: .875rem;
-    padding-block: 2.5rem 1rem;
+  }
+
+  .footer__bottom .footer__bottom-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .footer__bottom-logos {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer__bottom-logo {
+    width: 3.125rem;
+    aspect-ratio: 1;
   }
 
   .footer__bottom p {
     margin-bottom: 0;
-    text-align: center;
+  }
+
+  @container footer ( width <= 850px ) {
+    .footer__menu {
+      display: grid;
+      grid-template-rows: min-content 0fr;
+      transition: grid-template-rows 500ms;
+
+      &:has( + .footer__menu ) {
+        margin-bottom: .9375rem;
+        padding-bottom: .9375rem;
+        border-bottom: .0625rem solid var(--gray-light);
+      }
+
+      &.footer__menu--expanded {
+        grid-template-rows: min-content 1fr;
+
+        .footer__title:after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .footer__menu .footer__title {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 0;
+
+      &:after {
+        content: '\e316';
+        display: block;
+        font-family: 'Material Symbols Outlined';
+        font-size: 1.25rem;
+        margin-left: auto;
+
+        transition: transform 500ms;
+      }
+    }
+
+    .footer__menu-list {
+      overflow: hidden;
+    }
   }
 
   @container footer (width > 850px) {
@@ -146,6 +211,14 @@
 
     .subscribe-form {
       grid-template-columns: 1fr calc( 100% * 5 / 12 );
+    }
+
+    .footer__bottom p {
+      text-align: center;
+    }
+
+    .footer__bottom-logos {
+      justify-content: center;
     }
   }
 
