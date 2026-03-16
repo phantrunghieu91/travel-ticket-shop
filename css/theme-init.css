@@ -323,3 +323,13 @@ html.no-scroll:before {
     z-index: -1;
   }
 }
+/* Breadcrumbs */
+.gpw-breadcrumbs {
+  margin-block: 1.875rem;
+  p {
+    margin-bottom: 0;
+  }
+  .last {
+    color: var(--primary-medium);
+  }
+}
