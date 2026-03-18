@@ -17,7 +17,7 @@ class AdminProductPageController {
   }
   private function set_custom_fields() {
     // $highlight_data = get_field( 'highlights', 'gpw_product_data');
-    $amenities_data = get_field( 'group', 'gpw_product_data');
+    $amenities_data = get_field( 'amenities_group', 'gpw_product_data');
     $this->star_ratings = get_terms( [
       'taxonomy' => 'star-rating',
       'hide_empty' => false,
