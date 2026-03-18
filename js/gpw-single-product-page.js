@@ -67,6 +67,50 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(document.querySelector('.product-gallery'));
     },
   }.init();
+  // amenities details toggle
+  const amenitiesDetailsToggle = {
+    init() {
+      try {
+        this.cacheElements();
+        this.bindEvents();
+      } catch (error) {
+        console.warn('AMENITIES DETAILS TOGGLE ERROR: ', error);
+      }
+    },
+    cacheElements() {
+      this.openDialogBtnEl = document.querySelector('.product-detail__amenities .block__header-view-all');
+      this.amenitiesDetailsDialogEl = document.querySelector('.amenities-details');
+      if (!this.amenitiesDetailsDialogEl) {
+        throw new Error('No amenities details dialog element found');
+      }
+      this.closeBtnEl = this.amenitiesDetailsDialogEl.querySelector('.amenities-details__close');
+    },
+    bindEvents() {
+      if (!this.openDialogBtnEl || !this.closeBtnEl) {
+        throw new Error('No toggle button elements found for amenities details');
+      }
+      this.openDialogBtnEl.addEventListener('click', () => {
+        this.handleDialogToggle('open');
+      });
+      this.closeBtnEl.addEventListener('click', () => {
+        this.handleDialogToggle('close');
+      });
+    },
+    handleDialogToggle( state = 'open' ) {
+      switch(state) {
+        case 'open':
+          this.amenitiesDetailsDialogEl.showModal();
+          document.documentElement.classList.add('no-scroll');
+          break;
+        case 'close':
+          this.amenitiesDetailsDialogEl.close();
+          document.documentElement.classList.remove('no-scroll');
+          break;
+        default:
+          console.warn('Unknown dialog state: ', state);
+      }
+    }
+  }.init();
   // product detail description
   const productDescription = {
     init() {
