@@ -14,7 +14,7 @@ if (empty($product) || !$product instanceof WC_Product || $product->get_descript
       <?php esc_html_e('Mô tả cơ sở lưu trú', 'gpw') ?>
     </h2>
     <div class="product-description__content" aria-hidden="true">
-      <?= wp_kses_post($product->get_description()) ?>
+      <?= the_content() ?>
     </div>
     <a href="javascript:void(0);" class="product-description__toggle" aria-controls="product-description" aria-expanded="false">
       <?= esc_html_e('Xem thêm', 'gpw') ?>
