@@ -4,6 +4,7 @@
  * * Template: Footer - Menu block
  */
 $menu_id = $args['menu_id'] ?: false;
+$render_socials = $args['render_socials'] ?? false;
 if( !$menu_id ) {
   return;
 }
@@ -22,6 +23,9 @@ if( empty($menu_obj) || empty($menu_items) ) {
       </li>
     <?php endforeach ?>
   </ul>
+  <?php if( $render_socials ) {
+    get_template_part( 'custom-templates/footer/socials-block' );
+  } ?>
 </div>
 <?php 
 // ! Cleanup variables

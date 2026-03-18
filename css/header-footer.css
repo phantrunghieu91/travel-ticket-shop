@@ -161,6 +161,24 @@
     margin-bottom: 0;
   }
 
+  .gpw-socials {
+    padding-block: 1.25rem 0; 
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    gap: .625rem;
+
+    .gpw-socials__item {
+      margin-bottom: 0;
+
+      img {
+        display: block;
+        width: 2.5rem;
+        aspect-ratio: 1;
+      } 
+    }
+  }
+
   @container footer ( width <= 850px ) {
     .footer__menu {
       display: grid;

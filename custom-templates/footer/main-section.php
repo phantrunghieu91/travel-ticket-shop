@@ -27,7 +27,7 @@ $customer_menu_id = 101;
       <?php endif ?>
     </div>
     <?php get_template_part( 'custom-templates/footer/menu-block', null, ['menu_id' => $policy_menu_id] ) ?>
-    <?php get_template_part( 'custom-templates/footer/menu-block', null, ['menu_id' => $customer_menu_id] ) ?>
+    <?php get_template_part( 'custom-templates/footer/menu-block', null, ['menu_id' => $customer_menu_id, 'render_socials' => true] ) ?>
   </div>
 </section>
 <?php 
