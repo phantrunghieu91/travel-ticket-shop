@@ -16,8 +16,8 @@ class AdminProductPageController {
     add_action( 'woocommerce_process_product_meta', [ $this, 'save_custom_fields' ] );
   }
   private function set_custom_fields() {
-    $highlight_data = get_field( 'highlights', 'gpw_product_data');
-    $amenities_data = get_field( 'amenities', 'gpw_product_data');
+    // $highlight_data = get_field( 'highlights', 'gpw_product_data');
+    $amenities_data = get_field( 'group', 'gpw_product_data');
     $this->star_ratings = get_terms( [
       'taxonomy' => 'star-rating',
       'hide_empty' => false,
@@ -26,36 +26,39 @@ class AdminProductPageController {
       'taxonomy' => 'accommodation-type',
       'hide_empty' => false,
     ] );
-    if( empty( $highlight_data ) ) {
-      return;
+    if( !empty( $highlight_data ) ) {
+      foreach( $highlight_data as $idx => $highlight ) {
+        $this->highlights[] = [
+          'type' => 'checkbox',
+          'label' => $highlight['label'] ?? sprintf( __('Điểm nổi bật %d', 'gpw'), $idx + 1 ),
+          'cbvalue' => $idx,
+          'default' => 0,
+        ];
+      }
     }
-    foreach( $highlight_data as $idx => $highlight ) {
-      $this->highlights[] = [
-        'type' => 'checkbox',
-        'label' => $highlight['label'] ?? sprintf( __('Điểm nổi bật %d', 'gpw'), $idx + 1 ),
-        'cbvalue' => $idx,
-        'default' => 0,
-      ];
-    }
-    if( empty( $amenities_data ) ) {
-      return;
-    }
-    foreach( $amenities_data as $idx => $amenity ) {
-      $this->amenities[] = [
-        'type' => 'checkbox',
-        'label' => $amenity['label'] ?? sprintf( __('Tiện nghi %d', 'gpw'), $idx + 1 ),
-        'cbvalue' => $idx,
-        'default' => 0,
-      ];
+    if( !empty( $amenities_data ) ) {
+      foreach( $amenities_data as $grp_id => $group ) {
+        $this->amenities[$grp_id] = [
+          'label' => $group['name'] ?? sprintf( __('Nhóm tiện nghi %d', 'gpw'), $grp_id + 1 ),
+        ];
+        foreach( $group['amenities'] as $idx => $amenity ) {
+          $this->amenities[$grp_id]['amenities'][$idx] = [
+            'type' => 'checkbox',
+            'label' => $amenity['label'] ?? sprintf( __('Tiện nghi %d', 'gpw'), $grp_id * count( $group['amenities'] ) + $idx + 1 ),
+            'cbvalue' => "{$grp_id}_{$idx}",
+            'default' => 0,
+          ];
+        }
+      }
     }
   }
   public function add_data_tabs( $tabs ) {
-    $tabs['gpw_hotel_info'] = [
-      'label' => __('Điểm nổi bật', 'gpw'),
-      'target' => 'hotel_highlight_data',
-      'class' => ['show_if_simple', 'show_if_variable'],
-      'priority' => 1
-    ];
+    // $tabs['gpw_hotel_info'] = [
+    //   'label' => __('Điểm nổi bật', 'gpw'),
+    //   'target' => 'hotel_highlight_data',
+    //   'class' => ['show_if_simple', 'show_if_variable'],
+    //   'priority' => 1
+    // ];
     $tabs['gpw_hotel_amenities'] = [
       'label' => __('Tiện nghi', 'gpw'),
       'target' => 'hotel_amenities_data',
@@ -65,8 +68,83 @@ class AdminProductPageController {
     return $tabs;
   }
   public function add_data_panel_content() {
-    $saved_highlights = get_post_meta( get_the_ID(), '_gpw_highlight', true ) ?: [];
+    $this->amenities_panel_render();
+    ?>
+    <style id="gpw-options-custom-style">
+      .gpw-panel {
+        container-type: inline-size;
+      }
+      .gpw-panel .options_group {
+        padding: .5rem;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .gpw-panel .options_group .gpw-options-group {
+        padding-block: 1rem .3125rem;
+        margin-block: 0;
+        position: relative;
+        border: .0625rem solid #ddd;
+      }
+      .gpw-panel .options_group .gpw-options-group:has(+ .gpw-options-group) {
+        margin-bottom: 1rem;
+      }
+      .gpw-panel .gpw-options-group legend {
+        position: absolute;
+        top: 0px;
+        left: 1rem;
+        right: 1rem;
+        width: fit-content;
+        transform: translateY(-50%);
+        background: #fff;
+        padding-inline: .5rem;
+        line-height: 1;
+        font-weight: 700;
+        float: unset;
+        margin: 0;
+      }
+      .gpw-panel .gpw-options-group__content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0 .625rem;
+      }
+      .gpw-panel .options_group .form-field {
+        margin-block: 0;
+      }
+    </style>
+    <?php 
+  }
+  private function amenities_panel_render() {
     $saved_amenities = get_post_meta( get_the_ID(), '_gpw_amenities', true ) ?: [];
+    // dump($this->amenities);
+    ?>
+    <div id="hotel_amenities_data" class="panel gpw-panel woocommerce_options_panel">
+    <?php if( !empty( $this->amenities ) ): ?>
+      <div class="options_group">
+      <?php foreach( $this->amenities as $grp_id => $group ) {
+        echo '<fieldset class="gpw-options-group"><legend>' . esc_html( $group['label'] ) . '</legend>';
+        echo '<div class="gpw-options-group__content">';
+        foreach($group['amenities'] as $id => $amenity) {
+          $is_checked = in_array( $amenity['cbvalue'], $saved_amenities );
+          woocommerce_wp_checkbox( [
+            'id' => 'gpw_amenity_' . $amenity['cbvalue'],
+            'name' => 'gpw_amenities[]',
+            'label' => $amenity['label'],
+            'cbvalue' => $amenity['cbvalue'],
+            'value' => $is_checked ? $amenity['cbvalue'] : '',
+            'checked_value' => $amenity['cbvalue'],
+          ]);
+        }
+        echo '</div></fieldset>';
+      } ?>
+      </div>
+    <?php else: ?>
+      <p><?php esc_html_e( 'Không có tiện nghi nào để hiển thị', 'gpw' ) ?></p>
+    <?php endif ?>
+    </div>
+    <?php
+  }
+  private function highlight_panel_render() {
+    $saved_highlights = get_post_meta( get_the_ID(), '_gpw_highlight', true ) ?: [];
     ?>
     <div id="hotel_highlight_data" class="panel woocommerce_options_panel gpw-panel">
       <?php if( !empty( $this->highlights ) ): ?>
@@ -89,40 +167,7 @@ class AdminProductPageController {
         <p><?php esc_html_e( 'Không có điểm nổi bật nào để hiển thị', 'gpw' ) ?></p>
       <?php endif ?>
     </div>
-    <div id="hotel_amenities_data" class="panel gpw-panel woocommerce_options_panel">
-    <?php if( !empty( $this->amenities ) ): ?>
-      <div class="options_group">
-      <?php foreach($this->amenities as $amenity) {
-        $is_checked = in_array( $amenity['cbvalue'], $saved_amenities );
-        woocommerce_wp_checkbox( [
-          'id' => 'gpw_amenity_' . $amenity['cbvalue'],
-          'name' => 'gpw_amenities[]',
-          'label' => $amenity['label'],
-          'cbvalue' => $amenity['cbvalue'],
-          'value' => $is_checked ? $amenity['cbvalue'] : '',
-          'checked_value' => $amenity['cbvalue'],
-        ]);
-      } ?>
-      </div>
-    <?php else: ?>
-      <p><?php esc_html_e( 'Không có tiện nghi nào để hiển thị', 'gpw' ) ?></p>
-    <?php endif ?>
-    </div>
-    <style>
-      .gpw-panel {
-        container-type: inline-size;
-      }
-      .gpw-panel .options_group {
-        padding-top: 1rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: .625rem;
-      }
-      .gpw-panel .options_group .form-field {
-        margin-block: 0;
-      }
-    </style>
-    <?php 
+    <?php
   }
   public function add_general_product_data_fields() {
     $selected_accommodation_type = get_the_terms( get_the_ID(), 'accommodation-type' );
@@ -160,7 +205,7 @@ class AdminProductPageController {
       update_post_meta( $post_id, '_gpw_highlight', $highlights );
     }
     if( isset( $_POST['gpw_amenities'] ) ) {
-      $amenities = array_map( 'intval', $_POST['gpw_amenities'] );
+      $amenities = array_map( 'sanitize_text_field', $_POST['gpw_amenities'] );
       update_post_meta( $post_id, '_gpw_amenities', $amenities );
     }
     if( isset( $_POST['gpw_accommodation_type'] ) ) {
