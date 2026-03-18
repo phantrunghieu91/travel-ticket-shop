@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   }.init();
   // product detail description
-  const productDetailDescription = {
+  const productDescription = {
     init() {
       try {
         this.cacheElements();
@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     },
     cacheElements() {
-      this.descriptionWrapperEl = document.querySelector('.product-detail__description-wrapper');
+      this.descriptionWrapperEl = document.querySelector('.product-description');
       if (!this.descriptionWrapperEl) {
         throw new Error('No description wrapper element found for product detail');
       }
-      this.toggleButtonEl = this.descriptionWrapperEl.querySelector('.product-detail__description-toggle');
+      this.toggleButtonEl = this.descriptionWrapperEl.querySelector('.product-description__toggle');
     },
     bindToggleEvent() {
       if (!this.toggleButtonEl) {
@@ -115,10 +115,10 @@ document.addEventListener('DOMContentLoaded', function () {
       this.swiper = new Swiper(this.swiperEl, {
         slidesPerView: 1,
         spaceBetween: 10,
-        navigation: {
-          nextEl: '.product-detail__feedback-carousel .carousel-btn__next',
-          prevEl: '.product-detail__feedback-carousel .carousel-btn__prev',
-        },
+        pagination: {
+          el: '.product-detail__feedback-carousel .swiper-pagination',
+          clickable: true,
+        }
       });
     },
   }.init();
