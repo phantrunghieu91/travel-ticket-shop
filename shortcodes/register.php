@@ -10,3 +10,4 @@ include_once 'home_entertainment_categories.php';
 include_once 'home_magazine.php';
 include_once 'home_videos.php';
 include_once 'company_info.php';
+include_once 'header_contact_btn.php';

@@ -30,6 +30,35 @@
   }
 }
 
+.header-main .nav > .html > .header__contact {
+  display: grid;
+  grid-template-areas: 'icon text' 'icon phone';
+  gap: .3125rem .5rem;
+}
+
+.header__contact-icon {
+  grid-area: icon;
+  font-size: 2rem;
+  color: #fff;
+  padding: .5rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, var(--primary-medium), var(--secondary-medium));
+}
+
+.header__contact-text {
+  grid-area: text;
+  font-weight: 400;
+}
+
+.header__contact-phone {
+  grid-area: phone;
+  color: var(--primary-medium);
+}
+.header__contact-text, .header__contact-phone {
+  line-height: 1;
+  font-size: 1.25rem;
+}
+
 /* 
 =========================
 =         FOOTER        =
