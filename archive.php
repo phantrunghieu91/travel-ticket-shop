@@ -100,13 +100,7 @@ if (is_a($current_obj, 'WP_Term')) {
 }
 
 // Get spotlight category with slug 'tieu-diem'
-$spotlight_cat = get_category_by_slug('tieu-diem');
-// get all children categories of spotlight category
-$spotlight_children = get_categories(
-  array(
-    'child_of' => $spotlight_cat->term_id
-  )
-);
+$spotlight_cat = get_term(2, 'category');
 
 $type = '';
 switch (get_class($current_obj)) {
@@ -156,21 +150,20 @@ switch (get_class($current_obj)) {
       </div>
       <aside class="latest__sidebar">
         <?php
-        if (!empty($spotlight_children)):
-          foreach ($spotlight_children as $spotlight_child):
+        if (!empty($spotlight_cat) && !is_wp_error($spotlight_cat)) :
             // Get 3 posts of each spotlight category
             $spotlight_posts = get_posts(
               array(
-                'category' => $spotlight_child->term_id,
+                'category' => $spotlight_cat->term_id,
                 'numberposts' => 3,
                 'orderby' => 'date',
                 'order' => 'DESC'
               )
             );
             ?>
-            <section class="sidebar__spotlight cat-<?= esc_attr($spotlight_child->slug) ?>">
+            <section class="sidebar__spotlight cat-<?= esc_attr($spotlight_cat->slug) ?>">
               <header class="spotlight__header">
-                <div class="spotlight__title"><?= esc_html($spotlight_child->name) ?></div>
+                <div class="spotlight__title"><?= esc_html($spotlight_cat->name) ?></div>
               </header>
               <main class="spotlight__posts">
                 <?php $spotlight_post_count = 0;
@@ -188,8 +181,7 @@ switch (get_class($current_obj)) {
                 <?php endforeach; ?>
               </main>
             </section>
-          <?php endforeach;
-        endif; ?>
+          <?php endif; ?>
       </aside>
     </div>
   </section>
