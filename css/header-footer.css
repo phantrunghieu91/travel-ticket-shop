@@ -3,12 +3,31 @@
 =         HEADER        =
 =========================
 */
-.header-top .nav > li > a, .header-top .nav-small.nav > li.html {
+.header {
+  box-shadow: rgba(11, 11, 11, 0.1) 0px 2px 24px;
+}
+.header-main .nav > li > a, .header-main .nav-small.nav > li.html {
   font-size: 1rem;
+  color: var(--gray-darkest);
 }
 
 .header-main .header-nav.nav-left {
   justify-content: flex-end;
+}
+
+.header-bottom {
+  padding-block: 0 .5rem;
+}
+
+.header-bottom .nav > li > a {
+  font-size: .875rem;
+  color: var(--gray-dark);
+  padding: .625rem .875rem;
+
+  &:hover {
+    background-color: rgb( 240 241 242 / 1 );
+    border-radius: .3125rem;
+  }
 }
 
 /* 
