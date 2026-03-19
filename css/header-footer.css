@@ -6,6 +6,18 @@
 .header {
   box-shadow: rgba(11, 11, 11, 0.1) 0px 2px 24px;
 }
+.header .nav > li {
+  margin-inline: 0;
+}
+.header .nav > li > a:not(.header__contact) {
+  padding: .75rem .875rem;
+  line-height: 1;
+
+  &:hover {
+    background-color: rgb( 240 241 242 / 1 );
+    border-radius: .5rem;
+  }
+}
 .header-main .nav > li > a, .header-main .nav-small.nav > li.html {
   font-size: 1rem;
   color: var(--gray-darkest);
@@ -22,15 +34,10 @@
 .header-bottom .nav > li > a {
   font-size: .875rem;
   color: var(--gray-dark);
-  padding: .625rem .875rem;
-
-  &:hover {
-    background-color: rgb( 240 241 242 / 1 );
-    border-radius: .3125rem;
-  }
 }
 
 .header-main .nav > .html > .header__contact {
+  margin-left: .625rem;
   display: grid;
   grid-template-areas: 'icon text' 'icon phone';
   gap: .3125rem .5rem;
