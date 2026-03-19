@@ -6,7 +6,7 @@
   --_content-border-radius: .5rem;
   --_content-padding: 1rem;
   --_icon-size: 1.25rem;
-  background-color: #EBEDF1;
+  background-color: #f8fafc;
 
   .section__inner {
     width: min( calc(100% - 1.25rem), var(--screen-lg));
