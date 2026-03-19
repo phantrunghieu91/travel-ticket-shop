@@ -159,6 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
       this.swiper = new Swiper(this.swiperEl, {
         slidesPerView: 1,
         spaceBetween: 10,
+        loop: true,
+        autoplay: {
+          delay: 3500,
+        },
+        grabCursor: true,
         pagination: {
           el: '.product-detail__feedback-carousel .swiper-pagination',
           clickable: true,
