@@ -145,7 +145,7 @@
 
   .subscribe-form__title {
     font-size: 1rem;
-    line-height: 1;
+    line-height: 1.4;
     margin-bottom: 0;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
@@ -311,6 +311,7 @@
       overflow: hidden;
     }
   }
+  
 
   @container footer (width > 850px) {
     .footer__main .section__inner {
@@ -334,6 +335,13 @@
   @container footer ( width < 1200px ) {
     .section__inner {
       padding-inline: .625rem;
+    }
+  }
+
+  @media screen and ( max-width: 850px ) {
+    &.footer {
+      padding-top: 10rem;
+      margin-top: 8rem;
     }
   }
 }
