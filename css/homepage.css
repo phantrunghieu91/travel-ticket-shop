@@ -831,6 +831,11 @@
   }
 }
 
+@container content ( width < 550px ) {
+  .entertainment-categories {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 /* 
 ====================
 =    MAGAZINES     =
