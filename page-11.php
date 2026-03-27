@@ -21,7 +21,6 @@ $category_posts = get_posts(
     'category' => $carousel_cat_id
   )
 );
-$popular_category_id = 4;
 // Get entertainment categories
 $entertainment_category_ids = get_field('entertainment_categories', get_the_ID());
 if (!empty($entertainment_category_ids)) {
@@ -78,7 +77,7 @@ $magazine_posts = get_posts(
 
   <?php get_template_part('custom-templates/homepage/latest-news-section') ?>
 
-  <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2', ['category_id' => $popular_category_id]); ?>
+  <?php get_template_part('custom-templates/homepage/featured-post', 'layout-2'); ?>
 
   <section class="entertainment-section">
     <div class="section__inner">

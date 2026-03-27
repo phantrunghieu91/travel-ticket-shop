@@ -1,8 +1,11 @@
 <?php
 if (!defined('ABSPATH'))
   exit;
-$category_id = isset($args['category_id']) ? $args['category_id'] : 0;
+$category_id = get_field('featured_category', get_the_ID());
 $category = get_term($category_id, 'category');
+if( !$category || is_wp_error($category) ) {
+  return;
+}
 $feature_posts = get_posts(
   array(
     'numberposts' => 8,
@@ -50,11 +53,13 @@ $count = 0;
               <a href="<?= esc_url(get_permalink($feature_post->ID)) ?>"
                 class="feature-post__title"><?= esc_html($feature_post->post_title) ?></a>
               <?php if ($count >= 3):
-                $cat = get_categories($feature_post)[0]; ?>
+                $cats = get_the_category($feature_post->ID);
+                $cat = $cats[0]; ?>
                 <div class="feature-post__meta">
                   <span class="feature-post__date"><?= get_the_date('F j, Y', $feature_post->ID) ?></span>
-                  <a href="<?= esc_url(get_term_link($cat)) ?>"
-                    class="feature-post__category"><?= esc_html($cat->name) ?></a>
+                  <?php if( $cat ): ?>
+                    <a href="<?= esc_url(get_term_link($cat)) ?>" class="feature-post__category"><?= esc_html($cat->name) ?></a>
+                  <?php endif; ?>
                 </div>
               <?php endif;
               if ($count == 0): ?>
