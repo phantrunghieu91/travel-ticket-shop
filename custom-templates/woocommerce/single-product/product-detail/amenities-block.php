@@ -8,6 +8,15 @@ $amenities = get_field('amenities_group', 'gpw_product_data') ?: [];
 if (empty($saved_amenities)) {
   return;
 }
+$saved_amenities_base_on_group = [];
+foreach ($saved_amenities as $idx => $item) {
+  [$group_id, $amenity_id] = explode('_', $item);
+  $saved_amenities[$idx] = [$group_id, $amenity_id];
+  if (!isset($saved_amenities_base_on_group[$group_id])) {
+    $saved_amenities_base_on_group[$group_id] = [];
+  }
+  $saved_amenities_base_on_group[$group_id][] = $amenity_id;
+}
 ?>
 <div class="product-detail__amenities">
   <header class="block__header">
@@ -20,9 +29,8 @@ if (empty($saved_amenities)) {
     </a>
   </header>
   <ul class="product-detail__amenities-list">
-    <?php foreach ($saved_amenities as $amenity_idx):
-      $ids = explode('_', $amenity_idx);
-      $amenity = $amenities[$ids[0]]['amenities'][$ids[1]] ?? null;
+    <?php foreach ($saved_amenities as $amenity_ids):
+      $amenity = $amenities[$amenity_ids[0]]['amenities'][$amenity_ids[1]] ?? null;
       if (!$amenity)
         continue;
       ?>
@@ -43,11 +51,17 @@ if (empty($saved_amenities)) {
       </button>
     </header>
     <main class="amenities-details__main">
-      <?php foreach( $amenities as $group ): ?>
+      <?php foreach( $saved_amenities_base_on_group as $group_id => $amenity_ids ): 
+        $group = $amenities[$group_id] ?? null;
+        if( !$group ) continue;
+      ?>
         <div class="amenities-details__group">
           <h3 class="amenities-details__group-name"><?= esc_html( $group['name'] ) ?></h3>
           <ul class="amenities-details__group-list">
-          <?php foreach( $group['amenities'] as $amenity ): ?>
+          <?php foreach( $amenity_ids as $amenity_id ) :
+            $amenity = $group['amenities'][$amenity_id] ?? null;
+            if( !$amenity ) continue;
+          ?>
             <li class="amenities-details__group-item">
               <?php if ( !empty( $amenity['icon'] ) ) {
                 echo wp_get_attachment_image( $amenity['icon'] ?: PLACEHOLDER_IMAGE_ID, 'thumbnail', false, [ 'class' => 'amenities-details__group-item-icon' ] );

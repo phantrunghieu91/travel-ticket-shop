@@ -261,6 +261,9 @@
   }
 
   .product-detail__surrounding {
+    background-image: url(https://disanhoian.com/wp-content/uploads/2026/03/bg-krakow.png);
+    background-size: cover;
+    background-position: right center;
     :is(ul, ol) {
       margin-left: 1.25rem;
       margin-bottom: 0;
