@@ -56,7 +56,7 @@ $count = 0;
                 $cats = get_the_category($feature_post->ID);
                 $cat = $cats[0]; ?>
                 <div class="feature-post__meta">
-                  <span class="feature-post__date"><?= get_the_date('F j, Y', $feature_post->ID) ?></span>
+                  <span class="feature-post__date"><?= get_the_date('j, F, Y', $feature_post->ID) ?></span>
                   <?php if( $cat ): ?>
                     <a href="<?= esc_url(get_term_link($cat)) ?>" class="feature-post__category"><?= esc_html($cat->name) ?></a>
                   <?php endif; ?>
