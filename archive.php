@@ -7,7 +7,6 @@
 get_header();
 $current_obj = get_queried_object();
 $post_per_page = 5;
-
 if (is_a($current_obj, 'WP_Term')) {
   $obj_id = $current_obj->term_id;
   $obj_name = $current_obj->name;
@@ -17,7 +16,7 @@ if (is_a($current_obj, 'WP_Term')) {
     array(
       'post_type' => 'post',
       'posts_per_page' => $post_per_page,
-      'publish_status' => 'publish',
+      'post_status' => 'publish',
       'orderby' => 'date',
       'order' => 'DESC',
       'paged' => 1,
@@ -73,7 +72,7 @@ if (is_a($current_obj, 'WP_Term')) {
     array(
       'post_type' => 'post',
       'posts_per_page' => $post_per_page,
-      'publish_status' => 'publish',
+      'post_status' => 'publish',
       'orderby' => 'date',
       'order' => 'DESC',
       'paged' => 1,

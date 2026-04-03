@@ -17,9 +17,11 @@ $relate_cat = get_term($relate_cat_id);
   <div class="section__inner">
     <div class="category-header__content">
       <span class="category-header__title"><?= esc_html($obj_name) ?></span>
-      <a href="<?= esc_url(get_term_link($relate_cat)) ?>" class="category-header__relate-category">
-        <?= esc_html($relate_cat->name) ?>
-      </a>
+      <?php if (!empty($relate_cat) && !is_wp_error($relate_cat)): ?>
+        <a href="<?= esc_url(get_term_link($relate_cat)) ?>" class="category-header__relate-category">
+          <?= esc_html($relate_cat->name) ?>
+        </a>
+      <?php endif; ?>
     </div>
   </div>
   <?php if (!empty($obj_children)): ?>
