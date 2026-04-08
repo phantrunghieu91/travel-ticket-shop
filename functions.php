@@ -15,10 +15,12 @@ InfiniteScroll::registerAction();
 // add Woocommerce override class
 require_once get_theme_file_path('inc/WoocommerceOverride.php');
 require_once get_theme_file_path('inc/AdminProductPageController.php');
+require_once get_theme_file_path('inc/GPWCustomAPI.php');
 
 add_action( 'after_setup_theme', function() {
   new WoocommerceOverride();
   new AdminProductPageController();
+  new GPWCustomAPI();
 });
 
 // Turn off auto gen <p> of contact form 7
