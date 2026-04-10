@@ -13,6 +13,16 @@ class GPWCustomAPI {
       'callback' => [ $this, 'get_company_info' ],
       'permission_callback' => [ $this, 'permission_check' ]
     ]);
+    register_rest_route( 'gpw/v1', '/socials', [
+      'methods' => 'GET',
+      'callback' => [ $this, 'get_socials' ],
+      'permission_callback' => [ $this, 'permission_check' ]
+    ]);
+    register_rest_route( 'gpw/v1', '/footer_info', [
+      'methods' => 'GET',
+      'callback' => [ $this, 'get_footer_info' ],
+      'permission_callback' => [ $this, 'permission_check' ]
+    ]);
   }
   public function permission_check( $request ) {
     $apiKey = $request->get_header( 'X-API-KEY' );
@@ -26,5 +36,19 @@ class GPWCustomAPI {
       'email' => get_field('email', 'company_info'),
     ];
     return rest_ensure_response( $company_info );
+  }
+  public function get_socials() {
+    $socials = get_field('socials', 'company_info');
+    return rest_ensure_response( $socials );
+  }
+  public function get_footer_info() {
+    $subscribeForm = get_field('subscribe_form', 'company_info');
+    $footerMain = get_field('footer_main', 'company_info');
+    $footerBottom = get_field('footer_bottom', 'company_info');
+    return rest_ensure_response( [
+      'subscribe_form' => $subscribeForm,
+      'footer_main' => $footerMain,
+      'footer_bottom' => $footerBottom
+    ] );
   }
 }
