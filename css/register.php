@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', function () {
   }
   // import custom-single-post.css for single page with 'post' post type only
   if (is_single() && get_post_type() === 'post') {
-    wp_enqueue_style('custom-single-post', get_stylesheet_directory_uri() . '/css/custom-single-post.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('custom-single-post', get_stylesheet_directory_uri() . '/css/custom-single-post.css', [], time(), 'all');  // 1.0.0
   }
   // import custom-search.css for search page
   if (is_search()) {
