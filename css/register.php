@@ -13,7 +13,7 @@ add_action('wp_enqueue_scripts', function () {
   }
   // import custom-archive.css for archive page and not for archive-video.php, taxonomy-video-type.php
   if (is_archive() && !is_post_type_archive('video') && !is_tax('video-type')) {
-    wp_enqueue_style('custom-archive', get_stylesheet_directory_uri() . '/css/custom-archive.css', array(), '1.0.2', 'all');
+    wp_enqueue_style('custom-archive', get_stylesheet_directory_uri() . '/css/custom-archive.css', [], '1.0.3', 'all');
   }
   // import custom-single-post.css for single page with 'post' post type only
   if (is_single() && get_post_type() === 'post') {
