@@ -23,10 +23,13 @@ get_header();
   <section class="single-post__main">
     <div class="section__inner">
       <?= do_shortcode('[ez-toc]') ?>
+      
+      <?php get_template_part('custom-templates/single-post/pocket-guide-block'); ?>
+      
       <?php get_template_part('custom-templates/single-post/body', 'default', [
         'current_post' => $current_post,
         'category' => $category,
-      ]); ?>
+        ]); ?>
     </div>
   </section>
   <?php get_template_part( 'custom-templates/single-post/recommendation-posts-section', null, [ 'current_post' => $current_post, 'category' => $category ] ); ?>
