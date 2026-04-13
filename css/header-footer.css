@@ -9,15 +9,19 @@
 }
 .header .nav > li {
   margin-inline: 0;
+
+  &:not(:has(.header__contact)) {
+    padding: .75rem .875rem;
+    border-radius: .5rem;
+    
+    &:hover {
+      background-color: rgb( 240 241 242 / 1 );
+    }
+  }
 }
 .header .nav > li > a:not(.header__contact) {
-  padding: .75rem .875rem;
   line-height: 1;
-
-  &:hover {
-    background-color: rgb( 240 241 242 / 1 );
-    border-radius: .5rem;
-  }
+  padding-block: 0;
 }
 .header-main .nav > li > a, .header-main .nav-small.nav > li.html {
   font-size: 1rem;
@@ -35,6 +39,35 @@
 .header-bottom .nav > li > a {
   font-size: .875rem;
   color: var(--gray-dark);
+}
+
+.header-bottom-nav.nav > li {
+  display: flex;
+  align-items: center;
+
+  &:before {
+    font-family: 'Material Symbols Outlined';
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-right: .3125rem;
+    color: currentColor;
+  }
+
+  &:first-child:before {
+    content: '\ea68';
+  }
+
+  &:nth-child(2):before {
+    content: '\e53a';
+  }
+
+  &:nth-child(3):before {
+    content: '\eb3c';
+  }
+
+  &:nth-child(4):before {
+    content: '\eb28';
+  }
 }
 
 .header-main .nav > .html > .header__contact,
