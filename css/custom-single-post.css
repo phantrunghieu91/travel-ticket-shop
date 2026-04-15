@@ -76,6 +76,10 @@
   color: #000;
   text-transform: capitalize;
 }
+
+.single-post__share-btns .button.icon:is(.twitter, .email, .pinterest) {
+  display: none;
+}
 /* 
 ==========================
 =     Pocket guide       =

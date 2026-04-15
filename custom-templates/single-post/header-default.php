@@ -22,7 +22,7 @@ $author_name = get_the_author_meta('display_name', $current_post->post_author);
       </li>
       <li class="single-post__meta-item single-post__date-time">
         <span class="material-symbols-outlined">calendar_today</span>
-        <span><?= esc_html(get_the_date('l, d/m/Y - H:i', $current_post->ID)) ?></span>
+        <span><?= esc_html(get_the_date('d/m/Y', $current_post->ID)) ?></span>
       </li>
       <li class="single-post__meta-item single-post__share-btns">
         <?= do_shortcode('[share]') ?>
